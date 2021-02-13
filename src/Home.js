@@ -12,15 +12,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log("use effect ran");
-    console.log(name);
-  }, [name]);
+    fetch("http://localhost:8000/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogs(data);
+      });
+  }, []);
 
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
-      <button onClick={() => setName("Luigi")}>Change name</button>
-      <p>{name}</p>
+      {blogs && (
+        <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+      )}
     </div>
   );
 };
