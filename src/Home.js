@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://localhost:8000/blogsa")
+      fetch("http://localhost:8000/blogs")
         .then((res) => {
           if (!res.ok) {
             throw Error("could not fetch data for that resource");
